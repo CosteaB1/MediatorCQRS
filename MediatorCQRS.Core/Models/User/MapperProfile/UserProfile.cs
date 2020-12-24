@@ -3,7 +3,7 @@ using MediatorCQRS.Core.Models.User.Dto;
 
 namespace MediatorCQRS.Core.Models.User.MapperProfile
 {
-    class UserProfile : Profile
+    public class UserProfile : Profile
     {
         public UserProfile()
         {

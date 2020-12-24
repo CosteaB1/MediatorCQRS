@@ -7,5 +7,6 @@ namespace MediatorCQRS.Core.Models.User.Queries
 {
     public class GetAllUsersQuery : IRequest<IEnumerable<UserDto>>
     {
+
     }
 }

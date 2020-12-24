@@ -1,4 +1,10 @@
+using AutoMapper;
+using MediatorCQRS.Core.Intefaces;
+using MediatorCQRS.Core.Models.User.MapperProfile;
+using MediatorCQRS.Core.Models.User.Queries;
+using MediatorCQRS.Infrastructure.Data;
 using MediatorCQRS.Infrastructure.ProjectDbContext;
+using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -32,7 +38,10 @@ namespace MediatorCQRS.Web
                 options
                     .UseSqlServer(defaultConnectionString)
                     );
+            services.AddAutoMapper(typeof(UserProfile));
+            services.AddScoped(typeof(IRepository<>), typeof(EfRepository<>));
             services.AddControllers();
+            services.AddMediatR(typeof(GetAllUsersQuery));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
