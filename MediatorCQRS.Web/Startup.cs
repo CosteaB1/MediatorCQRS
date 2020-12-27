@@ -38,6 +38,7 @@ namespace MediatorCQRS.Web
                 options
                     .UseSqlServer(defaultConnectionString)
                     );
+            services.AddSwaggerGen();
             services.AddAutoMapper(typeof(UserProfile));
             services.AddScoped(typeof(IRepository<>), typeof(EfRepository<>));
             services.AddControllers();
@@ -51,6 +52,7 @@ namespace MediatorCQRS.Web
             {
                 app.UseDeveloperExceptionPage();
             }
+            app.UseSwagger();
 
             app.UseHttpsRedirection();
 
@@ -61,6 +63,10 @@ namespace MediatorCQRS.Web
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
+            });
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
             });
         }
     }

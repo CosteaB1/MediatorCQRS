@@ -33,5 +33,13 @@ namespace MediatorCQRS.Web.Controllers
             var dto = await _mediator.Send(query);
             return Ok(dto);
         }
+
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetById(int id)
+        {
+            var query = new GetUserByIdQuery(id);
+            var result = await _mediator.Send(query);
+            return result != null ? (IActionResult)Ok(result) : NotFound();
+        }
     }
 }
