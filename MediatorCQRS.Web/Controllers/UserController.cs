@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using MediatorCQRS.Core.Intefaces;
 using MediatorCQRS.Core.Models.User;
+using MediatorCQRS.Core.Models.User.Commands;
 using MediatorCQRS.Core.Models.User.Dto;
 using MediatorCQRS.Core.Models.User.Queries;
 using MediatR;
@@ -40,6 +41,12 @@ namespace MediatorCQRS.Web.Controllers
             var query = new GetUserByIdQuery(id);
             var result = await _mediator.Send(query);
             return result != null ? (IActionResult)Ok(result) : NotFound();
+        }
+        [HttpPost]
+        public async Task<IActionResult> CreateUser([FromBody] CreateUserCommand command)
+        {
+            var result = await _mediator.Send(command);
+            return CreatedAtAction(nameof(GetById), new { id = result.Id }, result);
         }
     }
 }
