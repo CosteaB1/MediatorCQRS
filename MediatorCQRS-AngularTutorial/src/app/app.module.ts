@@ -7,15 +7,17 @@ import { PostFormComponent } from './post-form/post-form.component';
 import { PostComponent } from './post/post.component';
 import { StyleDirective } from './directives/style.directive';
 import { IfnotDirective } from './directives/ifnot.directive';
+import { MultiByPipe } from './pipes/mult-by.pipe';
+import { ExMarksPipe } from './pipes/ex-marks.pipe';
+import { FilterPipe } from './pipes/filter.pipe';
 
 
 @NgModule({
   declarations: [
     AppComponent,
+    FilterPipe,
     PostFormComponent,
     PostComponent,
-    StyleDirective,
-    IfnotDirective,
   ],
   imports: [
     BrowserModule,
