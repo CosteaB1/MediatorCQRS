@@ -16,7 +16,6 @@ import { IfnotDirective } from './directives/ifnot.directive';
     PostComponent,
     StyleDirective,
     IfnotDirective,
-
   ],
   imports: [
     BrowserModule,

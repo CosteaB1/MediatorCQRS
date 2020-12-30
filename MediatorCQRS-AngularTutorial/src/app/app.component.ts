@@ -12,6 +12,7 @@ export interface Post {
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
+  e: number = Math.E;
   isVisible = true;
   posts: Post[] = [
     { title: 'Vreau sa invat Angular', text: 'eu inca invat', id: 1 },
