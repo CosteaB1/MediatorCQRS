@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
+import { AppCounterService } from './services/app-counter.service';
+import { LocalCounterService } from './services/local-counter.service';
 
 export interface Post {
   title: string;
@@ -10,20 +12,25 @@ export interface Post {
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss'],
+  providers: [LocalCounterService]
 })
 export class AppComponent {
-  p: Promise<string> = new Promise<string>(resolve => {
-    setTimeout(() => {
-      resolve('Promise Resolved');
-    }, 4000);
-  });
+  constructor(public appCounterService: AppCounterService, public localCounterService: LocalCounterService) {
 
-  date: Observable<Date> = new Observable(obs => {
-    setInterval(() => {
-      obs.next(new Date());
-    }, 1000);
-  });
+  }
+
+  // p: Promise<string> = new Promise<string>(resolve => {
+  //   setTimeout(() => {
+  //     resolve('Promise Resolved');
+  //   }, 4000);
+  // });
+
+  // date: Observable<Date> = new Observable(obs => {
+  //   setInterval(() => {
+  //     obs.next(new Date());
+  //   }, 1000);
+  // });
   // search = '';
   // searchField = 'title';
   // posts: Post[] = [
