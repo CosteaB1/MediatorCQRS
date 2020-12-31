@@ -15,6 +15,10 @@
                 *ngIf="formValidationTest.get('textTest').hasError('required') && formValidationTest.get('textTest').touched">
                 This field is required.
             </mat-error>
+            <mat-error
+                *ngIf="!formValidationTest.get('textTest').hasError('restrictedemails') && formValidationTest.get('textTest').touched">
+                Resitrected input
+            </mat-error>
         </mat-form-field>
 
         <mat-form-field class="example-full-width" appearance="outline">

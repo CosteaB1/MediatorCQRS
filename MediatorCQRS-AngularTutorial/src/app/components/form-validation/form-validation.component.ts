@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
+import { MyValidators } from './my.validatos';
 
 @Component({
   selector: 'app-form-validation',
@@ -15,7 +16,8 @@ export class FormValidationComponent implements OnInit {
       textTest: new FormControl('', [
         Validators.required,
         Validators.minLength(5),
-        Validators.maxLength(20)
+        Validators.maxLength(20),
+        MyValidators.restrictedEmails
       ]),
       text2: new FormControl('',
         Validators.required
