@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-form-validation',
@@ -19,7 +19,20 @@ export class FormValidationComponent implements OnInit {
       ]),
       text2: new FormControl('',
         Validators.required
-      )
+      ),
+      multipleSelect: new FormControl('',
+        Validators.required
+      ),
+      object: new FormGroup({
+        groupObject1: new FormControl('',
+          [
+            Validators.required,
+          ]),
+        groupObject2: new FormControl('', [
+          Validators.required
+        ])
+      }),
+      skills: new FormArray([])
     });
   }
   submit(): void {
@@ -28,6 +41,13 @@ export class FormValidationComponent implements OnInit {
       const formData = { ...this.formValidationTest.value };
       console.log('Form Data : ', formData);
     }
+  }
+  buttonSubmit(): void {
+    this.formValidationTest.markAllAsTouched();
+  }
+  addSkill(): any {
+    const control = new FormControl('', Validators.required);
+    (this.formValidationTest.get('skills') as FormArray).push(control);
   }
 
 }

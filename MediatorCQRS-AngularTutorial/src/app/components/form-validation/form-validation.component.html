@@ -1,18 +1,74 @@
-<form [formGroup]="formValidationTest" (ngSubmit)="submit()">
-    <p>
-        <mat-form-field appearance="outline">
-            <mat-label>Outline form field</mat-label>
+<div class="div-width">
+    <form class="example-form" [formGroup]="formValidationTest" (ngSubmit)="submit()">
+        <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>Text test Field</mat-label>
             <input matInput placeholder="Placeholder" formControlName="textTest">
+            <mat-error
+                *ngIf="formValidationTest.get('textTest').hasError('maxlength') && formValidationTest.get('textTest').touched">
+                Max lenght need to be less then 20.
+            </mat-error>
+            <mat-error
+                *ngIf="formValidationTest.get('textTest').hasError('minlength') && formValidationTest.get('textTest').touched">
+                Min lenght must be > 5.
+            </mat-error>
+            <mat-error
+                *ngIf="formValidationTest.get('textTest').hasError('required') && formValidationTest.get('textTest').touched">
+                This field is required.
+            </mat-error>
         </mat-form-field>
-    </p>
-    <p>
-        <mat-form-field appearance="outline">
-            <mat-label>Outline form field</mat-label>
+
+        <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>Text 2</mat-label>
             <input matInput placeholder="Placeholder" formControlName="text2">
+            <mat-error
+                *ngIf="formValidationTest.get('text2').hasError('required') && formValidationTest.get('text2').touched">
+                This field is required.
+            </mat-error>
         </mat-form-field>
-    </p>
 
-    <button mat-raised-button color="primary" type="submit" [disabled]="formValidationTest.invalid">Submit</button>
-    <button mat-raised-button color="primary" type="submit" >Submit2</button>
-
-</form>
+        <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>Select Option</mat-label>
+            <mat-select formControlName="multipleSelect">
+                <mat-option value="option">Option</mat-option>
+                <mat-option value="option1">Option1</mat-option>
+                <mat-option value="option2">Option2</mat-option>
+            </mat-select>
+            <mat-hint align="end">Here's the dropdown arrow ^</mat-hint>
+            <mat-error
+                *ngIf="formValidationTest.get('multipleSelect').hasError('required') && formValidationTest.get('multipleSelect').touched">
+                This field is required.
+            </mat-error>
+        </mat-form-field>
+        <div formGroupName="object">
+            <mat-form-field class="example-full-width" appearance="outline">
+                <mat-label>Group Onject 1</mat-label>
+                <input matInput placeholder="Placeholder" formControlName="groupObject1">
+                <mat-error
+                    *ngIf="formValidationTest.get('object.groupObject1').hasError('required') && formValidationTest.get('object.groupObject1').touched">
+                    This field is required.
+                </mat-error>
+            </mat-form-field>
+            <mat-form-field class="example-full-width" appearance="outline">
+                <mat-label>Group Object 2</mat-label>
+                <input matInput placeholder="Placeholder" formControlName="groupObject2">
+                <mat-error
+                    *ngIf="formValidationTest.get('object.groupObject2').hasError('required') && formValidationTest.get('object.groupObject2').touched">
+                    This field is required.
+                </mat-error>
+            </mat-form-field>
+        </div>
+        <div class="card" formGroupName="skills">
+            <button mat-raised-button color="primary" type="button" (click)="addSkill()"> Add skills</button>
+            <mat-form-field class="example-full-width" appearance="outline"
+                *ngFor="let control of formValidationTest.get('skills').controls; let idx=index">
+                <mat-label>Skill {{idx+1}}</mat-label>
+                <input matInput [formControlName]="idx">
+                <mat-error *ngIf="control.hasError('required') && control.touched">
+                    This field is required.
+                </mat-error>
+            </mat-form-field>
+        </div>
+        <!-- <button mat-raised-button color="primary" type="submit" [disabled]="formValidationTest.invalid">Submit</button> -->
+        <button mat-raised-button color="primary" type="submit" (click)="buttonSubmit()">Submit2</button>
+    </form>
+</div>
