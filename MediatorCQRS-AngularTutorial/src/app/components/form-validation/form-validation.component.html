@@ -1,1 +1,18 @@
-<p>form-validation works!</p>
+<form [formGroup]="formValidationTest" (ngSubmit)="submit()">
+    <p>
+        <mat-form-field appearance="outline">
+            <mat-label>Outline form field</mat-label>
+            <input matInput placeholder="Placeholder" formControlName="textTest">
+        </mat-form-field>
+    </p>
+    <p>
+        <mat-form-field appearance="outline">
+            <mat-label>Outline form field</mat-label>
+            <input matInput placeholder="Placeholder" formControlName="text2">
+        </mat-form-field>
+    </p>
+
+    <button mat-raised-button color="primary" type="submit" [disabled]="formValidationTest.invalid">Submit</button>
+    <button mat-raised-button color="primary" type="submit" >Submit2</button>
+
+</form>
