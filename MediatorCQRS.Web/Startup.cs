@@ -39,6 +39,12 @@ namespace MediatorCQRS.Web
                     .UseSqlServer(defaultConnectionString)
                     );
             services.AddSwaggerGen();
+            services.AddCors(o => o.AddPolicy("MyPolicy", builder =>
+            {
+                builder.AllowAnyOrigin()
+                       .AllowAnyMethod()
+                       .AllowAnyHeader();
+            }));
             services.AddAutoMapper(typeof(UserProfile));
             services.AddScoped(typeof(IRepository<>), typeof(EfRepository<>));
             services.AddControllers();
@@ -59,6 +65,7 @@ namespace MediatorCQRS.Web
             app.UseRouting();
 
             app.UseAuthorization();
+            app.UseCors("MyPolicy");
 
             app.UseEndpoints(endpoints =>
             {
