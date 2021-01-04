@@ -15,6 +15,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NavigationBarComponent } from './components/navigation-bar/navigation-bar.component';
 import { MaterialModule } from './material.module';
 import { HttpClientComponent } from './components/http-client/http-client.component';
+import { HttpPostComponent } from './components/http-client/http-post/http-post.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { HttpClientComponent } from './components/http-client/http-client.compon
     PostComponent,
     CounterComponent,
     FormValidationComponent,
-    HttpClientComponent
+    HttpClientComponent,
+    HttpPostComponent
   ],
   imports: [
     BrowserModule,
