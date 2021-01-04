@@ -48,5 +48,12 @@ namespace MediatorCQRS.Web.Controllers
             var result = await _mediator.Send(command);
             return CreatedAtAction(nameof(GetById), new { id = result.Id }, result);
         }
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> Delete(int id)
+        {
+            var query = new DeleteUserCommand(id);
+            await _mediator.Send(query);
+            return NoContent();
     }
+}
 }
