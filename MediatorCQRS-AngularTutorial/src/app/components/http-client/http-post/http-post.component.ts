@@ -54,6 +54,6 @@ export class HttpPostComponent implements OnInit {
   }
 
   addUser(user: IUser): Observable<any> {
-    return this.http.post('https://localhost:44312/api/User', user);
+    return this.http.post<IUser>('https://localhost:44312/api/User', user);
   }
 }
