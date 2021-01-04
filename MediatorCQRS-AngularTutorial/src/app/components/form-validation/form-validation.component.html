@@ -61,7 +61,7 @@
                 </mat-error>
             </mat-form-field>
         </div>
-        <div class="card" formGroupName="skills">
+        <!-- <div class="card" formGroupName="skills">
             <button mat-raised-button color="primary" type="button" (click)="addSkill()"> Add skills</button>
             <mat-form-field class="example-full-width" appearance="outline"
                 *ngFor="let control of formValidationTest.get('skills').controls; let idx=index">
@@ -71,7 +71,7 @@
                     This field is required.
                 </mat-error>
             </mat-form-field>
-        </div>
+        </div> -->
         <!-- <button mat-raised-button color="primary" type="submit" [disabled]="formValidationTest.invalid">Submit</button> -->
         <button mat-raised-button color="primary" type="submit" (click)="buttonSubmit()">Submit2</button>
     </form>

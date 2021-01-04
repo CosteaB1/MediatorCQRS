@@ -18,7 +18,7 @@ export class FormValidationComponent implements OnInit {
         Validators.minLength(5),
         Validators.maxLength(20),
         MyValidators.restrictedEmails
-      ]),
+      ], [MyValidators.uniqEmila]),
       text2: new FormControl('',
         Validators.required
       ),

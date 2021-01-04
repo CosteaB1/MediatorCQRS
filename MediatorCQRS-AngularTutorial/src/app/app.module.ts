@@ -3,6 +3,8 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+
 import { PostFormComponent } from './post-form/post-form.component';
 import { PostComponent } from './post/post.component';
 import { FilterPipe } from './pipes/filter.pipe';
@@ -12,7 +14,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NavigationBarComponent } from './components/navigation-bar/navigation-bar.component';
 import { MaterialModule } from './material.module';
-
+import { HttpClientComponent } from './components/http-client/http-client.component';
 
 @NgModule({
   declarations: [
@@ -22,11 +24,13 @@ import { MaterialModule } from './material.module';
     PostFormComponent,
     PostComponent,
     CounterComponent,
-    FormValidationComponent
+    FormValidationComponent,
+    HttpClientComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
+    HttpClientModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     MaterialModule,
