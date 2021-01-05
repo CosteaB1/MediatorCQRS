@@ -16,6 +16,7 @@ import { NavigationBarComponent } from './components/navigation-bar/navigation-b
 import { MaterialModule } from './material.module';
 import { HttpClientComponent } from './components/http-client/http-client.component';
 import { HttpPostComponent } from './components/http-client/http-post/http-post.component';
+import { HttpEditComponent } from './components/http-client/http-edit/http-edit.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { HttpPostComponent } from './components/http-client/http-post/http-post.
     CounterComponent,
     FormValidationComponent,
     HttpClientComponent,
-    HttpPostComponent
+    HttpPostComponent,
+    HttpEditComponent
   ],
   imports: [
     BrowserModule,

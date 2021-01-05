@@ -1,10 +1,9 @@
-import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
-import { Observable } from 'rxjs';
 import { IUser } from 'src/app/interfaces/user.interface';
 import { HttpClientComponent } from '../http-client.component';
+import { UserService } from '../user.service';
 
 @Component({
   selector: 'app-http-post',
@@ -14,7 +13,7 @@ import { HttpClientComponent } from '../http-client.component';
 export class HttpPostComponent implements OnInit {
   userValidation: FormGroup;
 
-  constructor(public dialogRef: MatDialogRef<HttpClientComponent>, private http: HttpClient) { }
+  constructor(public dialogRef: MatDialogRef<HttpClientComponent>, private userService: UserService) { }
 
   ngOnInit(): void {
     this.userValidation = new FormGroup({
@@ -43,7 +42,7 @@ export class HttpPostComponent implements OnInit {
       };
       this.dialogRef.close();
       console.log(user);
-      this.addUser(user).subscribe(response => {
+      this.userService.addUser(user).subscribe(response => {
         console.log('response', response);
       });
     }
@@ -51,9 +50,5 @@ export class HttpPostComponent implements OnInit {
   }
   buttonSubmit(): void {
     this.userValidation.markAllAsTouched();
-  }
-
-  addUser(user: IUser): Observable<any> {
-    return this.http.post<IUser>('https://localhost:44312/api/User', user);
   }
 }
