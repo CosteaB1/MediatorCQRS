@@ -22,4 +22,7 @@ export class UserService {
     updateUser(id: number, user: IUserUpdate): Observable<IUserUpdate> {
         return this.http.patch<IUser>(`https://localhost:44312/api/User/${id}`, user);
     }
+    getById(id: number): Observable<IUser> {
+        return this.http.get<IUser>(`https://localhost:44312/api/User/${id}`);
+    }
 }

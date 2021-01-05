@@ -18,6 +18,7 @@ import { HttpClientComponent } from './components/http-client/http-client.compon
 import { HttpPostComponent } from './components/http-client/http-post/http-post.component';
 import { HttpEditComponent } from './components/http-client/http-edit/http-edit.component';
 import { RoutingTestsComponent } from './components/routing-tests/routing-tests.component';
+import { UserComponent } from './components/user/user.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { RoutingTestsComponent } from './components/routing-tests/routing-tests.
     HttpClientComponent,
     HttpPostComponent,
     HttpEditComponent,
-    RoutingTestsComponent
+    RoutingTestsComponent,
+    UserComponent
   ],
   imports: [
     BrowserModule,
