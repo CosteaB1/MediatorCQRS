@@ -54,6 +54,13 @@ namespace MediatorCQRS.Web.Controllers
             var query = new DeleteUserCommand(id);
             await _mediator.Send(query);
             return NoContent();
+        }
+        [HttpPatch("{id}")]
+        public async Task<IActionResult> UpdateUser(int id,[FromBody] UpdateUserCommand command)
+        {
+            command.Id = id;
+            var result = await _mediator.Send(command);
+            return Ok(result);
+        }
     }
-}
 }

@@ -38,6 +38,13 @@ export class HttpClientComponent implements OnInit {
       .subscribe(usersGet => {
         this.users = usersGet;
         this.loading = false;
+        console.log(this.users);
+      });
+  }
+  remove(id: number): any {
+    this.http.delete(`https://localhost:44312/api/User/${id}`)
+      .subscribe(() => {
+        this.users = this.users.filter(t => t.id !== id);
       });
   }
 

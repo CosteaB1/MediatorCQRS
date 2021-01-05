@@ -3,26 +3,31 @@
     <mat-icon>add</mat-icon>
 </button>
 <div *ngIf="!loading; else loadingBlock">
-    <div class="card" *ngFor="let user of users">
-        <mat-card class="example-card">
-            <mat-card-header>
-                <mat-card-title>User: {{user.firstName}} {{user.lastName}}</mat-card-title>
-                <mat-card-subtitle>{{user.email}}</mat-card-subtitle>
-            </mat-card-header>
-            <mat-card-content>
-                <p>
-                    Age: {{user.age}}
-                </p>
-                <p>
-                    Discount : {{user.discount}}
-                </p>
-            </mat-card-content>
-            <mat-card-actions>
-                <button mat-raised-button color="primary">Edit</button>
-                <button mat-raised-button color="warn">Delete</button>
-            </mat-card-actions>
-        </mat-card>
+    <div *ngIf="users.length; else noUsers">
+        <div class="card" *ngFor="let user of users">
+            <mat-card class="example-card">
+                <mat-card-header>
+                    <mat-card-title>User: {{user.firstName}} {{user.lastName}}</mat-card-title>
+                    <mat-card-subtitle>{{user.email}}</mat-card-subtitle>
+                </mat-card-header>
+                <mat-card-content>
+                    <p>
+                        Age: {{user.age}}
+                    </p>
+                    <p>
+                        Discount : {{user.discount}}
+                    </p>
+                </mat-card-content>
+                <mat-card-actions>
+                    <button mat-raised-button color="primary">Edit</button>
+                    <button mat-raised-button color="warn" (click)="remove(user.id)">Delete</button>
+                </mat-card-actions>
+            </mat-card>
+        </div>
     </div>
+    <ng-template #noUsers>
+        <p>No Users Atm ...</p>
+    </ng-template>
 </div>
 <ng-template #loadingBlock>
     <p>Loading ...</p>
