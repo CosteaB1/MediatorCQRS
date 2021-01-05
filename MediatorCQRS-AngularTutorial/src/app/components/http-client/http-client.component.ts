@@ -15,13 +15,15 @@ export class HttpClientComponent implements OnInit {
   loading = false;
 
   constructor(private userService: UserService, private dialog: MatDialog) {
+    this.dialog._getAfterAllClosed().subscribe(() => {
+      console.log('constructor');
+      this.getUsers();
+    });
   }
 
   ngOnInit(): void {
-    this.dialog.afterAllClosed.subscribe(() => {
-      console.log('Init');
-      this.getUsers();
-    });
+    this.getUsers();
+    console.log('NgInit');
   }
   onCreate(): any {
     const dialogConfig = new MatDialogConfig();

@@ -17,6 +17,7 @@ import { MaterialModule } from './material.module';
 import { HttpClientComponent } from './components/http-client/http-client.component';
 import { HttpPostComponent } from './components/http-client/http-post/http-post.component';
 import { HttpEditComponent } from './components/http-client/http-edit/http-edit.component';
+import { RoutingTestsComponent } from './components/routing-tests/routing-tests.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { HttpEditComponent } from './components/http-client/http-edit/http-edit.
     FormValidationComponent,
     HttpClientComponent,
     HttpPostComponent,
-    HttpEditComponent
+    HttpEditComponent,
+    RoutingTestsComponent
   ],
   imports: [
     BrowserModule,
